@@ -5,5 +5,9 @@ missingCallInArraySelector()?[missingCall]
 badParameter("bad_string")
 missingCall
 functionInsideFunction(function())
-missingCallInsideFunction(missingCall)
-
+missingCallInsideFunction(missingCall?[])
+arrayWithMultipleLines()?[
+ function(
+    test(1, 2, 3, true, false)
+ )
+]

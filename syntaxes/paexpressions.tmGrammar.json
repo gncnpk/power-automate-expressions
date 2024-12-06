@@ -72,7 +72,7 @@
           "name": "invalid.illegal.double-quotes.pae"
         },
         {
-          "match": "(?<=\\(|\\[)\\w+(?=\\)|\\]|\\[.*\\])|(?<!\\'|\")\\w+(?!\\()(?=\n)",
+          "match": "(?<=\\(|\\[)\\w+(?=\\)|\\]|\\?*\\[.*\\])|(?<!\\'|\")\\w+(?!\\()(?=\n)",
           "name": "invalid.illegal.missingCall.pae"
         }
       ]
@@ -80,12 +80,20 @@
     "keyword": {
       "patterns": [
         {
-          "match": "[a-zA-Z]+(?=\\(.*\\))",
+          "match": "[a-zA-Z]+(?=\\()",
           "name": "entity.name.function.pae"
         },
         {
           "match": "\\?",
           "name": "keyword.operator.optional.pae"
+        },
+        {
+          "match": "[0-9]",
+          "name": "constant.numeric.pae"
+        },
+        {
+          "match": "(true|false)",
+          "name": "constant.language.boolean.pae"
         }
       ]
     },
