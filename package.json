@@ -1,7 +1,8 @@
 {
   "name": "power-automate-expressions",
   "displayName": "Power Automate Expressions",
-  "description": "Provides langauage support for Power Automate expressions.",
+  "description": "Provides syntax support for Power Automate expressions.",
+  "author": {"name": "Gavin Canon-Phratsachack"},
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.94.0"
