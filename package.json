@@ -8,6 +8,7 @@
   "engines": {
     "vscode": "^1.94.0"
   },
+  "repository": {"url": "https://github.com/gncnpk/power-automate-expressions"},
   "categories": [
     "Programming Languages",
     "Snippets"
