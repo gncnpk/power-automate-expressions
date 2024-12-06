@@ -1,0 +1,9 @@
+validParameter('valid_string')
+array()?['arraySelector']
+functionInArraySelector()?[function()]
+missingCallInArraySelector()?[missingCall]
+badParameter("bad_string")
+missingCall
+functionInsideFunction(function())
+missingCallInsideFunction(missingCall)
+

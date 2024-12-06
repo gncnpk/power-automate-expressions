@@ -1,0 +1,26 @@
+{
+  "name": "power-automate-expressions",
+  "displayName": "Power Automate Expressions",
+  "description": "Provides langauage support for Power Automate expressions.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "paexpressions",
+      "aliases": ["Power Automate Expressions", "paexpressions"],
+      "extensions": [".pae"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "paexpressions",
+      "scopeName": "source.pae",
+      "path": "./syntaxes/paexpressions.tmGrammar.json"
+    }]
+  }
+}

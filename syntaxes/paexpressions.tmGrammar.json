@@ -1,0 +1,122 @@
+{
+  "scopeName": "source.pae",
+  "patterns": [
+    {
+      "include": "#parameter"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#keyword"
+    },
+    {
+      "include": "#illegal"
+    },
+    {
+      "include": "#array"
+    }
+  ],
+  "repository": {
+    "parameter": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.round.pae"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.round.pae"
+        }
+      },
+      "name": "meta.brace.round.pae",
+      "patterns": [
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#illegal"
+        },
+        {
+          "include": "#keyword"
+        }
+      ]
+    },
+    "string": {
+      "begin": "'",
+      "end": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.start.pae"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.pae"
+        }
+      },
+      "name": "string.quoted.single.pae",
+      "patterns": [
+        {
+          "include": "#illegal"
+        }
+      ]
+    },
+    "illegal": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "invalid.illegal.double-quotes.pae"
+        },
+        {
+          "match": "(?<=\\(|\\[)\\w+(?=\\)|\\]|\\[.*\\])|(?<!\\'|\")\\w+(?!\\()(?=\n)",
+          "name": "invalid.illegal.missingCall.pae"
+        }
+      ]
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "match": "[a-zA-Z]+(?=\\(.*\\))",
+          "name": "entity.name.function.pae"
+        },
+        {
+          "match": "\\?",
+          "name": "keyword.operator.optional.pae"
+        }
+      ]
+    },
+    "array": {
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.square.pae"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.square.pae"
+        }
+      },
+      "name": "meta.array.literal.pae",
+      "patterns": [
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#illegal"
+        },
+        {
+          "include": "#keyword"
+        },
+        {
+          "include": "#parameter"
+        }
+      ]
+    }
+  }
+}
