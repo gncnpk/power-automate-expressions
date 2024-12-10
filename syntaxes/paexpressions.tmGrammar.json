@@ -15,9 +15,17 @@
     },
     {
       "include": "#array"
+    },
+    {
+      "include": "#comment"
     }
   ],
   "repository": {
+    "comment": {
+      "begin": "/*",
+      "end": "*/",
+      "name": "comment.block"
+    },
     "parameter": {
       "begin": "\\(",
       "end": "\\)",
@@ -59,9 +67,6 @@
       },
       "name": "string.quoted.single.pae",
       "patterns": [
-        {
-          "include": "#illegal"
-        }
       ]
     },
     "illegal": {

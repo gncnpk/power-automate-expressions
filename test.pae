@@ -11,3 +11,5 @@ arrayWithMultipleLines()?[
     test(1, 2, 3, true, false)
  )
 ]
+doubleQuoteInsideSingleQuotes('"double_quote"')
+/* this is a comment */
