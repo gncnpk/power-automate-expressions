@@ -22,8 +22,8 @@
   ],
   "repository": {
     "comment": {
-      "begin": "/*",
-      "end": "*/",
+      "begin": "\/\\*",
+      "end": "\\*\/",
       "name": "comment.block"
     },
     "parameter": {
