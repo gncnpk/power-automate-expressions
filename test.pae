@@ -13,3 +13,5 @@ arrayWithMultipleLines()?[
 ]
 doubleQuoteInsideSingleQuotes('"double_quote"')
 /* this is a comment */
+item()?['test'] // inline comment
+// some line comment

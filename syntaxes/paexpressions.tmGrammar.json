@@ -18,13 +18,21 @@
     },
     {
       "include": "#comment"
+    },
+    {
+      "include": "#line-comment"
     }
   ],
   "repository": {
     "comment": {
-      "begin": "\/\\*",
-      "end": "\\*\/",
+      "begin": "/\\*",
+      "end": "\\*/",
       "name": "comment.block"
+    },
+    "line-comment": {
+      "begin": "//",
+      "end": "$",
+      "name": "comment.line.double-slash.pae"
     },
     "parameter": {
       "begin": "\\(",
@@ -66,8 +74,7 @@
         }
       },
       "name": "string.quoted.single.pae",
-      "patterns": [
-      ]
+      "patterns": []
     },
     "illegal": {
       "patterns": [
