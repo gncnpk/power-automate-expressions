@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_1 = require("vscode-languageserver/node");
 const vscode_languageserver_textdocument_1 = require("vscode-languageserver-textdocument");
+const functions_1 = require("./functions"); // Import the workflow functions map
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 const connection = (0, node_1.createConnection)(node_1.ProposedFeatures.all);
@@ -10,35 +11,6 @@ const documents = new node_1.TextDocuments(vscode_languageserver_textdocument_1.
 let hasConfigurationCapability = false;
 let hasWorkspaceFolderCapability = false;
 let hasDiagnosticRelatedInformationCapability = false;
-// --- Update Function Data (Add paramTypes and returnType) ---
-// NOTE: Fill this out meticulously for ALL functions based on documentation for real use.
-const workflowFunctions = new Map([
-    ["tolower", { name: "toLower", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "String", description: "Return a string in lowercase format." }],
-    ["guid", { name: "guid", minArgs: 0, maxArgs: 1, paramTypes: ["String"], returnType: "String", description: "Return a globally unique identifier (GUID)." }], // Optional format is String
-    ["parameters", { name: "parameters", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Any", description: "Get the value from a parameter." }], // Param name is String
-    ["concat", { name: "concat", minArgs: 2, maxArgs: -1, paramTypes: ["String"], returnType: "String", description: "Combine two or more strings." }], // All args should ideally be strings, but implicit conversion is likely
-    ["add", { name: "add", minArgs: 2, maxArgs: 2, paramTypes: ["NumberLike", "NumberLike"], returnType: "Number", description: "Return the result from adding two numbers." }], // Use custom "NumberLike" to handle Integer/Float/mixed
-    ["action", { name: "action", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Object", description: "Return the current action's output object (special context)." }],
-    ["actions", { name: "actions", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Object", description: "Return a specific action's output object." }], // Action name is String
-    ["body", { name: "body", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Any", description: "Return an action's body output." }], // Action name is string
-    ["item", { name: "item", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Any", description: "Return the current item in a loop (special context)." }],
-    ["items", { name: "items", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Any", description: "Return the current item from a specific loop." }], // Loop name is String
-    ["trigger", { name: "trigger", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Object", description: "Return the trigger's output object." }],
-    ["triggerbody", { name: "triggerBody", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Any", description: "Return the trigger's body output." }],
-    ["triggeroutputs", { name: "triggerOutputs", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Object", description: "Return the trigger's output object (same as trigger())." }],
-    ["variables", { name: "variables", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Any", description: "Return the value for a specified variable." }], // Var name is String
-    ["workflow", { name: "workflow", minArgs: 0, maxArgs: 0, paramTypes: [], returnType: "Object", description: "Return details about the workflow itself." }],
-    ["json", { name: "json", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Object | Array | Any", description: "Return the JSON type value/object for a string or XML." }], // Simplified: Expects String input primarily
-    ["xml", { name: "xml", minArgs: 1, maxArgs: 1, paramTypes: ["String | Object"], returnType: "XML", description: "Return the XML version for a string or JSON object." }], // Input String or JSON object
-    ["xpath", { name: "xpath", minArgs: 2, maxArgs: 2, paramTypes: ["XML | String", "String"], returnType: "Array | XML | Any", description: "Check XML for nodes or values that match an XPath expression." }], // Input XML/String, XPath String
-    ["int", { name: "int", minArgs: 1, maxArgs: 1, paramTypes: ["String"], returnType: "Integer", description: "Convert the string version for an integer to an actual integer number." }],
-    ["float", { name: "float", minArgs: 1, maxArgs: 2, paramTypes: ["String", "String"], returnType: "Float", description: "Convert a string version for a floating-point number to an actual floating point number." }], // Value String, optional Locale String
-    ["bool", { name: "bool", minArgs: 1, maxArgs: 1, paramTypes: ["Any"], returnType: "Boolean", description: "Return the Boolean version of a value." }],
-    ["equals", { name: "equals", minArgs: 2, maxArgs: 2, paramTypes: ["Any", "Any"], returnType: "Boolean", description: "Check whether both values, expressions, or objects are equivalent." }],
-    ["if", { name: "if", minArgs: 3, maxArgs: 3, paramTypes: ["Boolean", "Any", "Any"], returnType: "Any", description: "Check whether an expression is true or false. Based on the result, return a specified value." }],
-    // ... Add paramTypes and returnType for ALL other functions ...
-]);
-// --- End Function Data ---
 // --- Semantic Token Setup ---
 const tokenTypes = [
     "function",
@@ -153,7 +125,7 @@ connection.onHover(({ textDocument, position, }) => {
         return undefined; // Didn't find a word pattern ending at the cursor
     }
     // Look up the found word (case-insensitive) in our function map
-    const funcInfo = workflowFunctions.get(word.toLowerCase());
+    const funcInfo = functions_1.workflowFunctions.get(word.toLowerCase());
     if (funcInfo) {
         // Construct a simple signature representation
         // A real implementation might store/parse the signature more formally
@@ -193,7 +165,7 @@ connection.onCompletion((_textDocumentPosition) => {
         line.match(/^@?([a-zA-Z0-9_]*)$/) // Start of the line
     ) {
         const completionItems = [];
-        workflowFunctions.forEach((funcInfo) => {
+        functions_1.workflowFunctions.forEach((funcInfo) => {
             // Create snippet string
             let snippet = `${funcInfo.name}(`;
             if (funcInfo.minArgs > 0) {
@@ -287,7 +259,7 @@ async function validateTextDocument(textDocument) {
     let funcMatch;
     while ((funcMatch = functionCallRegex.exec(text)) !== null) {
         const funcName = funcMatch[1].toLowerCase();
-        const funcInfo = workflowFunctions.get(funcName);
+        const funcInfo = functions_1.workflowFunctions.get(funcName);
         const funcStartIndex = funcMatch.index;
         const funcNameStartIndex = funcStartIndex + funcMatch[0].indexOf(funcMatch[1]);
         const funcNameEndIndex = funcNameStartIndex + funcMatch[1].length;

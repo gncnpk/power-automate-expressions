@@ -17,6 +17,8 @@
     "Programming Languages",
     "Linters"
   ],
+  "pricing": "Free",
+  "icon": "images/logo.png",
   "main": "./client/dist/extension.js",
   "contributes": {
     "languages": [
