@@ -14,7 +14,7 @@ None as of 12/06/2024.
 
 ## Release Notes
 
-### 0.0.7
+### 0.1.0
 
 Update description and license.
 
