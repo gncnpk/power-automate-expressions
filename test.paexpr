@@ -1,1 +1,2 @@
-@{to
+@{and(toUpper(param1),toLower(param2))}
+@{toUpper(param2)}

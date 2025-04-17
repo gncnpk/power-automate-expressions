@@ -1,7 +1,7 @@
 {
   "name": "power-automate-expressions",
   "displayName": "Power Automate Expressions",
-  "description": "Provides syntax support for Power Automate expressions.",
+  "description": "Provides syntax, autocompletion, and linting support for expressions used in Power Automate/Azure Logic Apps.",
   "author": {
     "name": "Gavin Canon-Phratsachack"
   },
@@ -15,7 +15,8 @@
   },
   "categories": [
     "Programming Languages",
-    "Linters"
+    "Linters",
+    "Snippets"
   ],
   "pricing": "Free",
   "icon": "images/logo.png",
@@ -25,8 +26,9 @@
       {
         "id": "paexpr",
         "aliases": [
-          "Power Automate Expressions",
-          "paexpr"
+          "Power Automate",
+          "Power Platform",
+          "Logic Apps"
         ],
         "extensions": [
           ".paexpr"

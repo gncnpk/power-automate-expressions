@@ -14,6 +14,10 @@ None as of 12/06/2024.
 
 ## Release Notes
 
+### 0.1.1
+
+Updated description, tags and aliases.
+
 ### 0.1.0
 
 Update description and license.
