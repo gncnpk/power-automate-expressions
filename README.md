@@ -1,5 +1,3 @@
-![A dark blue logo with words "Power Automate Expressions"](https://raw.githubusercontent.com/gncnpk/power-automate-expressions/refs/heads/master/images/logo.png)
-
 # Power Automate Expressions
 
 ## Features
