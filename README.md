@@ -4,7 +4,9 @@
 
 ## Features
 
-Provides limited syntax support for Power Automate Expressions.
+Provides syntax, autocompletion, and linting support for Power Automate/Azure Logic Apps expressions.
+
+https://learn.microsoft.com/en-us/azure/logic-apps/workflow-definition-language-functions-reference
 
 ## Known Issues
 
