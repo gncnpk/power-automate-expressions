@@ -4,6 +4,10 @@ All notable changes to the "power-automate-expressions" extension will be docume
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.2] - 2025-04-17
+
+- Updated logo for easier readability.
+
 ## [0.1.1] - 2025-04-17
 - Updated description, tags and aliases.
 
