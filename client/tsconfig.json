@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig.json", // Inherit root settings
+    "compilerOptions": {
+      "outDir": "dist",
+      "rootDir": "src",
+      "module": "CommonJS", // VS Code extensions use CommonJS
+      "composite": true // Enable if using project references
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+  }

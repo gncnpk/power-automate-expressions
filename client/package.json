@@ -1,0 +1,16 @@
+{
+    "name": "power-automate-expressions-language-client",
+    "description": "Language Client for Power Automate Expressions",
+    "version": "1.0.0",
+    "engines": {
+      "node": "*"
+    },
+    "dependencies": {
+      "vscode-languageclient": "^9.0.1"
+    },
+    "scripts": {
+      "compile": "tsc -b",
+      "watch": "tsc -b -w"
+    }
+  }
+  

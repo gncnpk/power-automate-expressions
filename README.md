@@ -10,6 +10,10 @@ None as of 12/06/2024.
 
 ## Release Notes
 
+### 0.0.6
+
+Added a lanaguage server for syntax highlighting and linting.
+
 ### 0.0.5 
 
 Added in-line comment support.

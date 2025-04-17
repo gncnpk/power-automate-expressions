@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "module": "Node16", // Or NodeNext
+      "target": "ES2020", // Or newer
+      "lib": ["ES2020", "DOM"],
+      "sourceMap": true,
+      "strict": true,
+      "rootDir": ".",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+      // "composite": true, // Enable if using project references below
+      // "declaration": true // Enable if using project references below
+    },
+    "include": ["client/src", "server/src"],
+    "exclude": ["node_modules", ".vscode-test"],
+    // Optional: Use project references for cleaner builds
+    "references": [{ "path": "./client" }, { "path": "./server" }]
+  }
+  

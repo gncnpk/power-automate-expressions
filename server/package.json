@@ -1,0 +1,17 @@
+{
+    "name": "power-automate-expressions-language-server",
+    "description": "Language Server for Power Automate Expressions",
+    "version": "1.0.0",
+    "engines": {
+      "node": "*"
+    },
+    "dependencies": {
+      "vscode-languageserver": "^9.0.1",
+      "vscode-languageserver-textdocument": "^1.0.11"
+    },
+    "scripts": {
+      "compile": "tsc -b",
+      "watch": "tsc -b -w"
+    }
+  }
+  
