@@ -4,6 +4,9 @@ All notable changes to the "power-automate-expressions" extension will be docume
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.0] - 2025-04-17
+- Updated license and description.
+
 ## [0.0.6] - 2025-04-17
 - Added a language server for syntax highlighting and linting.
 
